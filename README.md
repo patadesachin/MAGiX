@@ -1,0 +1,2 @@
+# MAGiX
+flutter MAGiX app
