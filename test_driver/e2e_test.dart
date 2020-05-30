@@ -12,7 +12,6 @@ void main() {
     setUpAll(() async {
       _driver = await FlutterDriver.connect();
        firstPage = new FirstPage(_driver);
-
     });
 
     // Close the connection to the driver after the tests have completed.
@@ -26,7 +25,7 @@ void main() {
       // First, tap on the button
       firstPage.selectDropdown('Hyderabad');
       expect(await _driver.getText(find.text('Hyderabad')), isNotNull);
-    });
+    },tags: ['Smoke ','Login']);
  
   test('Verify radio button', () async  {
       firstPage.selectRadioButton('Female');
@@ -37,6 +36,6 @@ void main() {
       firstPage.selectCheckbox();
         }, timeout: Timeout(Duration(minutes: 1)), onPlatform: {
     'safari': Skip('Safari is currently broken (see #1234)')
-  });
+  },tags: ['sanity', 'functional']);
   }, timeout: Timeout(Duration(minutes: 1)),tags: ['sanity', 'functional']);
 }
